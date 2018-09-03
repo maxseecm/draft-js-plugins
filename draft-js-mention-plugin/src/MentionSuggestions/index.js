@@ -321,6 +321,7 @@ export class MentionSuggestions extends Component {
       positionSuggestions, // eslint-disable-line no-unused-vars
       mentionTrigger, // eslint-disable-line no-unused-vars
       mentionPrefix, // eslint-disable-line no-unused-vars
+      avatarOnError,
       ...elementProps } = this.props;
 
     return React.cloneElement(
@@ -332,7 +333,7 @@ export class MentionSuggestions extends Component {
         id: `mentions-list-${this.key}`,
         ref: (element) => { this.popover = element; },
       },
-      this.props.suggestions.map((mention, index) => (
+      [this.props.children, this.props.suggestions.map((mention, index) => (
         <Entry
           key={mention.id != null ? mention.id : mention.name}
           onMentionSelect={this.onMentionSelect}
@@ -344,8 +345,9 @@ export class MentionSuggestions extends Component {
           theme={theme}
           searchValue={this.lastSearchValue}
           entryComponent={entryComponent || defaultEntryComponent}
+          avatarOnError={avatarOnError}
         />
-      ))
+      ))]
     );
   }
 }
