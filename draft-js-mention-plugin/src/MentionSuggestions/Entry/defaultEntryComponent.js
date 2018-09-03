@@ -5,7 +5,7 @@ const defaultEntryComponent = (props) => {
   const {
     mention,
     theme,
-    onError,
+    avatarOnError,
     isFocused, // eslint-disable-line no-unused-vars
     searchValue, // eslint-disable-line no-unused-vars
     ...parentProps
@@ -13,7 +13,7 @@ const defaultEntryComponent = (props) => {
 
   return (
     <div {...parentProps}>
-      <Avatar mention={mention} theme={theme} onError={onError} />
+      <Avatar mention={mention} theme={theme} onError={avatarOnError} />
       <span className={theme.mentionSuggestionsEntryText}>{mention.name}</span>
     </div>
   );
